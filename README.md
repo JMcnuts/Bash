@@ -58,6 +58,7 @@ touch -t yymmddhhmm.ss #Will make a file, with arguments will create a file with
 ```
 mkdir -p #Will make a dir, with arguments will make a dir with nested directories on it.
 ```
+cut -d: -f1- -s fakepasswd.txt
 
 ```
 chmod 777
@@ -278,7 +279,13 @@ Tip: The above inode is specific to this CTFd question and might not be in use o
 find -inum 4026532575 -printf "%f\n"
 ```
 
+## Find certain strings within a file 
 
+```
+cut -d: -f1 -s fakepasswd.txt
+```
+
+#wHERE -d is my delimiter, allows me to set a parameter that divides the text, -f1 will output only the information about the field 1 and -s will avoid outputing anything that does not comply with the delimiter.
 
 
 
