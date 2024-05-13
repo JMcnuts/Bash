@@ -285,7 +285,7 @@ find -inum 4026532575 -printf "%f\n"
 cut -d: -f1 -s fakepasswd.txt
 ```
 
-#wHERE -d is my delimiter, allows me to set a parameter that divides the text, -f1 will output only the information about the field 1 and -s will avoid outputing anything that does not comply with the delimiter.
+#Where -d is my delimiter, allows me to set a parameter that divides the text, -f1 will output only the information about the field 1 and -s will avoid outputing anything that does not comply with the delimiter.
 
 
 ## Find all files, disregard directories and move them to a different directory.
