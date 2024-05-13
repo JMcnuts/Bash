@@ -238,5 +238,48 @@ While this activity can be accomplished with only find, it can also be combined 
 ```
 find $HOME/1123/*.txt | grep -v '~'
 ```
+## Find files ended in .txt on a particular dir and disregard the ones ended in containing ~
+then copy the .txt files to $HOME/CUT dir
+
+Copy all files in the $HOME/1123 directory, that end in ".txt", and omit files containing a tilde "~" character, to directory $HOME/CUT.
+
+Use only the find and cp commands. You will need to utilize the -exec option on find to accomplish this activity.
+
+The find command uses BOOLEAN "!" to designate that it does not want to find any files or directories that follows.
+
+
+```
+find -path "$HOME/1123/*.txt"  ! -path "$HOME/1123/*~.txt" -exec cp {} $HOME/CUT \;
+```
+
+## Find all empty files/directories and print out the filename and inode number in diferent lines
+
+Using ONLY the find command, find all empty files/directories in directory /var and print out ONLY the filename (not absolute path), and the inode number, separated by newlines.
+
+Tip: When using the man pages, it is better to focus your search then to visually scan 1000+ lines of text. Combining the output with the grep command, possibly with its -A, -B, or -C options, can help drive context driven searches of those manual pages.
+
+Example Output
+
+123 file1
+456 file2
+789 file3
+
+```
+find /var -empty 2>/dev/null -printf "%i %f\n" 
+```
+
+## Find all files with a certain inode number (find -inode ####) and print their filename only (-printf "%f\n") in different lines.
+
+Using ONLY the find command, find all files on the system with inode 4026532575 and print only the filename to the screen, not the absolute path to the file, separating each filename with a newline. Ensure unneeded output is not visible.
+
+Tip: The above inode is specific to this CTFd question and might not be in use on your Linux Opstation. Instead, you can test your command on your Linux OpStation against inode 999.
+
+```
+find -inum 4026532575 -printf "%f\n"
+```
+
+
+
+
 
 
