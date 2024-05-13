@@ -53,6 +53,11 @@ touch -t yymmddhhmm.ss #Will make a file, with arguments will create a file with
 ```
 mkdir -p #Will make a dir, with arguments will make a dir with nested directories on it.
 ```
+
+```
+chmod 777
+```
+
 ```
 
 
