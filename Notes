@@ -1,0 +1,38 @@
+# Bash Notes
+Linux codes and commands:
+
+```
+ls -latr
+```
+
+```
+ls -latp
+```
+
+```
+ls -al #This will show hidden files 
+```
+
+```
+cd 
+```
+
+```
+sudo
+```
+
+```
+sudo lso -c cron 
+```
+
+```
+lsof breakdown for cron
+```
+
+```
+lsod -i :123 mach with ip find in netstat breakout earlier
+```
+
+```
+establish persistance /etc.inittab or crontab
+```
