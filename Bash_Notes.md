@@ -59,5 +59,21 @@ chmod 777
 ```
 
 ```
+umask
+```
+
+```
+rm -rf #To force removal
+```
+
+```
+rmdir #Remove dir
+```
+
+```
+rm -rp #removes a nested directory
+```
+
+```
 
 
