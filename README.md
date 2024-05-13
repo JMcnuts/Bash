@@ -288,5 +288,19 @@ cut -d: -f1 -s fakepasswd.txt
 #wHERE -d is my delimiter, allows me to set a parameter that divides the text, -f1 will output only the information about the field 1 and -s will avoid outputing anything that does not comply with the delimiter.
 
 
+## Find all files, disregard directories and move them to a different directory.
+
+```
+ls -p $HOME/CUT | grep -v / | grep /*.txt > $HOME/CUT/names
+```
+#Where $HOME/CUT is my current dir and $HOME/CUT/names is the dir to where I wanna write all my files.
+
+
+
+
+
+
+
+
 
 
