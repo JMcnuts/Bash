@@ -71,7 +71,7 @@ rmdir #Remove dir
 ```
 
 ```
-rm -rp #removes a nested directory
+rm -r #removes a nested directory
 ```
 
 ```
