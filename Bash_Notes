@@ -37,3 +37,22 @@ lsod -i :123 mach with ip find in netstat breakout earlier
 ```
 establish persistance /etc.inittab or crontab
 ```
+
+```
+man #Manual with information about commands.
+```
+
+```
+cat /etc/passwd
+```
+
+```
+touch -t yymmddhhmm.ss #Will make a file, with arguments will create a file with a certain timestamp 
+```
+
+```
+mkdir -p #Will make a dir, with arguments will make a dir with nested directories on it.
+```
+```
+
+
