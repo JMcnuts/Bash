@@ -318,3 +318,33 @@ tail fakepasswd.txt | awk -F: '{print $1}'
 ```
 awk -F: '($3 == 0) {print $1}' fakepasswd.txt
 ```
+## $NF Field refers tp the last field 
+```
+awk -F: '($3 > 150) {print $1,$6,$3,$NF}' fakepasswd.txt 
+```
+#Will print fields 1,6,3 and last field 
+
+## Sort
+
+```
+cat fakepasswd.txt | awk -F: '{print$3}' | sort -t:
+```
+## Sort, organize the results by numeric number present on field 2.
+
+```
+ps aux | sort -k 2
+```
+
+Using ONLY the awk command, write a BASH one-liner script that extracts ONLY the names of all the system and user accounts that are not UIDs 0-3.
+Only display those that use /bin/bash as their default shell.
+The input file is named $HOME/passwd and is located in the current directory.
+Output the results to a file called $HOME/SED/names.txt
+Tip: awk can use conditional statements, e.g. print only the line in /etc/passwd that has "root" as its first field.
+
+
+
+```
+awk -F: '($3 > 3 && $NF == "/bin/bash") {print $1}' passwd > SED/names.txt
+```
+
+
