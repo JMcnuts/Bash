@@ -371,7 +371,7 @@ sed -e 's/Chicken/Cheese/g' -e 's/Peppers/Jalapenos/' pizza.txt
 ```
 sed -e '/Cheese/d'  pizza.txt 
 ```
-
+done
 
 
 
