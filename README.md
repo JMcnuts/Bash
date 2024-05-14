@@ -303,9 +303,18 @@ ls -l $HOME/CUT | cut -d. -f1- -s | cut -d: -f2 | cut -d" " -f2 > $HOME/CUT/name
 
 ```
 
+## Awk scripting language inside of a language, inception.
+
+```
+tail fakepasswd.txt | awk -F: '{print $1}'
+```
+#Will print everything in front of the : for tail fakepasswd and field 1, if we specify $1,$4 will print fields 1-4
 
 
 
 
+## In between parenthesis () we introduce the if statement (if field 3 == 0) print field 1
 
-
+```
+awk -F: '($3 == 0) {print $1}' fakepasswd.txt
+```
