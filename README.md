@@ -296,7 +296,12 @@ ls -p $HOME/CUT | grep -v / | grep /*.txt > $HOME/CUT/names
 #Where $HOME/CUT is my current dir and $HOME/CUT/names is the dir to where I wanna write all my files.
 
 
+## Same program only using ls and cut:
 
+```
+ls -l $HOME/CUT | cut -d. -f1- -s | cut -d: -f2 | cut -d" " -f2 > $HOME/CUT/names 
+
+```
 
 
 
