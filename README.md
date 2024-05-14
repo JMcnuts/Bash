@@ -358,3 +358,22 @@ Tip: As you may have noticed, when using grep you can simulate a logical AND by 
 ```
 dmesg | grep "CPU\|BIOS" | grep -vi "usable\|reserved" | cut -d] -f2-
 ```
+
+## sed command. 
+
+```
+sed -e 's/Chicken/Cheese/g' -e 's/Peppers/Jalapenos/' pizza.txt
+```
+#Where g is global sign so it will do the whole line, no g just the first string in that line 
+
+### delete a string with sed.
+
+```
+sed -e '/Cheese/d'  pizza.txt 
+```
+
+
+
+
+
+
