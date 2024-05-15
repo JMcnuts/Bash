@@ -158,7 +158,34 @@ Results in
 
 $ mkdir /var/log/auth_log /var/log/syslog_log /var/log/dmesg_log
 
-Activity: Using Brace-Expansion, create the following directories within the $HOME directory:
+Activity: Using Brace-Expansion, creatWrite a script that determines your default gateway ip address. Assign that address to a variable using command substitution.
+NOTE: Networking on the CTFd is limited for security reasons. ip route and route are emulated. Use either of those with no switches.
+
+Have your script determine the absolute path of the ping application. Assign the absolute path to a variable using command substitution.
+
+Have your script send six ping packets to your default gateway, utilizing the path discovered in the previous step, and assign the response to a variable using command substitution.
+
+Evaluate the response as being either successful or failure, and print an appropriate message to the screen.
+
+dg=$(route | tail -2 | head -1 | cut -d" " -f2)
+pr=$(whereis ping | cut -d" " -f2)
+num=$($pr $dg -c 6 | tail -2 | head -1 | cut -d" " -f4)
+if [[ $num == "0" ]]; then
+echo "failure";
+else
+echo "successful";
+fi
+"RIGHT" Answer:
+
+A=$(route | grep 'default.*[[:digit:]]' | awk '{print $2}')
+B=$(which ping)
+C=" 0% packet loss"
+D=$($B -c 6 $A | grep -Eo "$C")
+if [[ "$C" == "$D" ]]; then
+echo "successful";
+else
+echo "failure";
+fie the following directories within the $HOME directory:
 
 1123
 1134
@@ -285,7 +312,34 @@ find -inum 4026532575 -printf "%f\n"
 cut -d: -f1 -s fakepasswd.txt
 ```
 
-#Where -d is my delimiter, allows me to set a parameter that divides the text, -f1 will output only the information about the field 1 and -s will avoid outputing anything that does not comply with the delimiter.
+#Where -d is my delimiter, allows me to set a parameter that divides the text, -f1 will output only the information about the field 1 and -s will avoid outputing anything that does not comply with the delimiter.Write a script that determines your default gateway ip address. Assign that address to a variable using command substitution.
+NOTE: Networking on the CTFd is limited for security reasons. ip route and route are emulated. Use either of those with no switches.
+
+Have your script determine the absolute path of the ping application. Assign the absolute path to a variable using command substitution.
+
+Have your script send six ping packets to your default gateway, utilizing the path discovered in the previous step, and assign the response to a variable using command substitution.
+
+Evaluate the response as being either successful or failure, and print an appropriate message to the screen.
+
+dg=$(route | tail -2 | head -1 | cut -d" " -f2)
+pr=$(whereis ping | cut -d" " -f2)
+num=$($pr $dg -c 6 | tail -2 | head -1 | cut -d" " -f4)
+if [[ $num == "0" ]]; then
+echo "failure";
+else
+echo "successful";
+fi
+"RIGHT" Answer:
+
+A=$(route | grep 'default.*[[:digit:]]' | awk '{print $2}')
+B=$(which ping)
+C=" 0% packet loss"
+D=$($B -c 6 $A | grep -Eo "$C")
+if [[ "$C" == "$D" ]]; then
+echo "successful";
+else
+echo "failure";
+fi
 
 
 ## Find all files, disregard directories and move them to a different directory.
@@ -498,7 +552,7 @@ echo "successful";
 else
 echo "failure";
 fi
-```
+````
 
 
 
