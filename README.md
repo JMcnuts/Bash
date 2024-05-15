@@ -373,9 +373,7 @@ sed -e '/Cheese/d'  pizza.txt
 ```
 
 
-13-Activity:
-
-Find all executable files under the following four directories:
+13-Find all executable files under the following four directories:
 /bin
 /sbin
 /usr/bin
