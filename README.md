@@ -392,6 +392,20 @@ echo $base > myfile
 awk -F: -v "awk_var1=$name" -v "awk_var2=$ugid" 'BEGIN {OFS=":"} {$1=awk_var1} {$3=awk_var2} {$4=awk_var2} {$6="/home/"awk_var1} {$7="/bin/bash"} {print}' myfile >> $file
 
 ```
+14-Using any BASH command complete the following:
+Sort the /etc/passwd file numerically by the GID field.
+
+For the 10th entry in the sorted passwd file, get an md5 hash of that entry’s home directory.
+
+Output ONLY the MD5 hash of the directory's name to standard output.
+
+Use sort -t* for delimiter
+
+```
+sort -t: -k4 -n /etc/passwd | head -10 | tail -1 | cut -d: -f6 | md5sum | cut -d" " -f1
+```
+
+
 
 15- Write a script which will find and hash the contents 3 levels deep from each of these directories: /bin /etc /var
 Your script should:
