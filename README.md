@@ -461,6 +461,7 @@ else
     echo "Run ssh-keygen"
 fi
 ``
+
 17-Write a script that determines your default gateway ip address. Assign that address to a variable using command substitution.
 NOTE: Networking on the CTFd is limited for security reasons. ip route and route are emulated. Use either of those with no switches.
 
@@ -470,7 +471,9 @@ Have your script send six ping packets to your default gateway, utilizing the pa
 
 Evaluate the response as being either successful or failure, and print an appropriate message to the screen.
 
+
 ```
+
 dg=$(route | tail -2 | head -1 | cut -d" " -f2)
 pr=$(whereis ping | cut -d" " -f2)
 num=$($pr $dg -c 6 | tail -2 | head -1 | cut -d" " -f4)
@@ -479,9 +482,11 @@ echo "failure";
 else
 echo "successful";
 fi
+
 ```
 
 "RIGHT" Answer:
+
 
 ```
 A=$(route | grep 'default.*[[:digit:]]' | awk '{print $2}')
