@@ -597,7 +597,28 @@ echo $rootline | awk -F: -v uu=$x -v ii=$myuid 'BEGIN{OFS=":"}{$1=uu;$3=ii;$4=ii
 done
 ```
 
+20-Write a bash script that will find all the files in the /etc directory, and obtains the octal permission of those files. The stat command will be useful for this task.
+Depending how you go about your script, you may find writing to the local directory useful. What you must seperate out from the initial results are the octal permissions of 0-640 and those equal to and greater than 642, ie 0-640 goes to low.txt, while 642 is sent to high.txt.
 
+Have your script uniquely sort the contents of the two files by count, numerically-reversed, and output the results, with applicable titles, to the screen. An example of the desired output is shown below.
+
+NOTE: There is a blank line being printed between the two sections of the output below.
+
+```
+find /etc -type f -exec stat -c '%a' {} \; > ./A 2>/dev/null
+for x in $(cat ./A) ; do
+if [[ $x -le 640 ]] ; then
+echo $x >> ./less
+elif [[ $x -ge 642 ]] ; then
+echo $x >> ./more
+fi
+done
+echo 'Files w/ OCTAL Perm Values 642+:'
+cat ./more | sort | uniq -c | sort -nr
+echo
+echo 'Files w/ OCTAL Perm Values 0-640:'
+cat ./less | sort | uniq -c | sort -nr
+```
 
 done
 
