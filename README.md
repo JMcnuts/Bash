@@ -514,7 +514,7 @@ if [[ -d $HOME/.ssh ]]; then
 else
     echo "Run ssh-keygen"
 fi
-``
+```
 
 17-Write a script that determines your default gateway ip address. Assign that address to a variable using command substitution.
 NOTE: Networking on the CTFd is limited for security reasons. ip route and route are emulated. Use either of those with no switches.
