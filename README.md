@@ -504,13 +504,6 @@ fi
 
 
 
-
-
-
-
-
-
-`
 18-Create the following files in a new directory you create $HOME/ZIP:
 
 file1 will contain the md5sum of the text 12345
