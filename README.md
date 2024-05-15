@@ -434,6 +434,27 @@ echo "Unsuccessfully Hashed Directories: $Bad"
 rm *.del
 ```
 
+16-Design a script that detects the existence of directory: $HOME/.ssh
+
+Upon successful detection, copies any and all files from within the directory $HOME/.ssh to directory $HOME/SSH and produce no output. You will need to create $HOME/SSH.
+Upon un-successful detection, displays the error message "Run ssh-keygen" to the user.
+NOTE: If the $HOME/.ssh directory does not exist, one may run the ssh-keygen command. Accept all defaults for the purposes of this exercise. This is not necessary for passing the activity but can be used for testing on your local machine.
+
+
+```
+if [[ -d $HOME/.ssh ]]; then 
+    mkdir $HOME/SSH
+    cp $HOME/.ssh/* $HOME/SSH/ 
+else
+    echo "Run ssh-keygen"
+fi
+```
+
+
+
+
+
+
 done
 
 
