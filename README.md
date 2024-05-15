@@ -371,6 +371,32 @@ sed -e 's/Chicken/Cheese/g' -e 's/Peppers/Jalapenos/' pizza.txt
 ```
 sed -e '/Cheese/d'  pizza.txt 
 ```
+
+
+13-Activity:
+
+Find all executable files under the following four directories:
+/bin
+/sbin
+/usr/bin
+/usr/sbin
+Sort the filenames with absolute path, and get the md5sum of the 10th file from the top of the list.
+Tip: In the below example, you can see the different uses of md5sum. While not wrong, the first command is hashing the string output of the the find command. In the second, md5sum is hashing the file contents of the given file, which is what is intended for this activity. You can also tell the second method hashed the file as the file name is listed in the hash output; the first only lists a hyphen indicating a string was hashed. For this activity, to provide md5sum with the 10th file of the sorted output, it is recommended to use Command Subtitution.
+
+
+```
+file=$1
+name=$2
+ugid=$3
+base=$(tail -1 $file)
+echo $base > myfile
+
+awk -F: -v "awk_var1=$name" -v "awk_var2=$ugid" 'BEGIN {OFS=":"} {$1=awk_var1} {$3=awk_var2} {$4=awk_var2} {$6="/home/"awk_var1} {$7="/bin/bash"} {print}' myfile >> $file
+
+```
+
+
+
 done
 
 
