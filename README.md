@@ -395,7 +395,44 @@ awk -F: -v "awk_var1=$name" -v "awk_var2=$ugid" 'BEGIN {OFS=":"} {$1=awk_var1} {
 
 ```
 
+15- Write a script which will find and hash the contents 3 levels deep from each of these directories: /bin /etc /var
+Your script should:
 
+Exclude named pipes. These can break your script.
+
+Redirect STDOUT and STDERR to separate files.
+
+Determine the count of files hashed in the file with hashes.
+
+Determine the count of unsuccessfully hashed directories.
+
+Have both counts output to the screen with an appropriate title for each count.
+
+HINT: use wc -l
+
+```
+mkdir $HOME/HASHES
+find /bin /etc /var -maxdepth 3 ! -type p -exec md5sum {} > $HOME/HASHES/success 2>$HOME/HASHES/fail \;
+A=$(wc -l $HOME/HASHES/success | awk '{print $1}')
+B=$(grep -c "Is a directory" $HOME/HASHES/fail)
+if [[ "$A" ]]; then
+echo "Successfully Hashed Files: $A";
+echo "Unsuccessfully Hashed Directories: $B";
+else
+echo "oops"; -maxdepth 3
+fi
+
+```
+```
+
+DIRS='/bin /etc /var'
+find $DIRS -maxdepth 3 ! -type p -exec md5sum {} \; >STDOUT.del 2>STDERR.del
+Good=$(cat STDOUT.del | wc -l)
+Bad=$(egrep "Is a" STDERR.del | wc -l)
+echo "Successfully Hashed Files: $Good"
+echo "Unsuccessfully Hashed Directories: $Bad"
+rm *.del
+```
 
 done
 
