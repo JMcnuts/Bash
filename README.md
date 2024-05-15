@@ -605,7 +605,7 @@ Have your script uniquely sort the contents of the two files by count, numerical
 NOTE: There is a blank line being printed between the two sections of the output below.
 
 ```
-find /etc -type f -exec stat -c '%a' {} \; > ./A 2>/dev/null
+ffind /etc -type f -exec stat -c '%a' {} \; > ./A 2>/dev/null
 for x in $(cat ./A) ; do
 if [[ $x -le 640 ]] ; then
 echo $x >> ./less
