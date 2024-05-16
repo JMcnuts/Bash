@@ -605,7 +605,7 @@ Have your script uniquely sort the contents of the two files by count, numerical
 NOTE: There is a blank line being printed between the two sections of the output below.
 
 ```
-ffind /etc -type f -exec stat -c '%a' {} \; > ./A 2>/dev/null
+find /etc -type f -exec stat -c '%a' {} \; > ./A 2>/dev/null
 for x in $(cat ./A) ; do
 if [[ $x -le 640 ]] ; then
 echo $x >> ./less
@@ -623,6 +623,135 @@ cat ./less | sort | uniq -c | sort -nr
 done
 
 
+#Practice-Test
+##1-Replace every instance of 'cat' in "infile" with 'dog'.
+Replace every instance of 'Navy' in "infile" with 'Army'. Replacements are case-sensitive. Write the output to the file specifed by the variable 'outfile'.
+
+```
+  infile=$1
+  outfile=$2
+  #Your code here
+sed -e 's/cat/dog/g' -e 's/Navy/Army/g' $1 > $2
+```
 
 
 
+##2-Create a script that will print to standard output all user names from the /etc/passwd file.
+
+```
+cut -d: -f1 /etc/passwd
+```
+
+
+
+##3-Print to standard output all usernames from the file path specified by the parameter filename sorted ascending numerically by user id.
+The file will be in the format of /etc/passwd
+
+```
+  filename=$1
+  #Your code here
+cat /etc/passwd | sort -t: -k3 -n | cut -d: -f1
+```
+```
+sort -n -t: -k 3 fakepasswd.txt | cut -d":" -f1
+```
+
+
+##4-Print to standard output the total number of files in the directory specified by dirname.
+If the directory does not exist, print 'Invalid Directory' The count excludes the '.' and '..' pseudo-directories.
+```
+  dirname=$1
+  #Your code here
+if [[ $1 ]] ; then
+find $1 -type f -maxdepth 1 | wc -l
+else
+echo "Invalid Directory"
+fi
+```
+
+##5-Delete all files contained in the directory specified by dirdel
+Also delete the directory specified by dirdel
+```
+  dirdel=$1
+  #Your code here
+rm -rf $1
+```
+
+##6-Create a file specified by the name newfile.
+Set the file modified date to the value specified in filedate and time to '1730'. NOTE: filedate contains only a valid date in YYYYMMDD format, not a time.
+```
+  newfile=$1
+  filedate=$2
+  #Your code here
+touch $1
+touch -t ${2}1730 $1
+```
+```
+touch -t "$filedate"1730 $newfile
+```
+
+##7-Read the file specified by fname and perform an action based on the contents of the file:
+If contents are 0 to 9, print "single digit" to standard output. If contents are 10 to 99, print "double digit" to standard output. If contents are 100 to 999, print "triple digit" to standard output. Otherwise, print "Error" to standard output.
+```
+  fname=$1
+  #Your code here
+var=$(cat $1)
+num=$(echo "${#var}")
+if [[ "$num" == 1 ]] ; then
+echo "single digit"
+elif [[ "$num" == 2 ]] ; then
+echo "double digit"
+elif [[ "$num" == 3 ]] ; then
+echo "triple digit"
+else
+echo "Error"
+fi
+```
+```
+cont='cat $fname'
+if [[ $cont -lt 10 ]] ; then
+ echo single digit
+if [[ $cont -lt 100 ]] ; then
+ echo double digit
+if [[ $cont -lt 10000 ]] ; then
+ echo triple digit
+else
+ echo Error
+fi
+```
+
+
+##8-Copy all lines from the file specified by src variable to the file specified by dst variable which DO NOT contain the text specified by match variable
+
+```  
+  src=$1
+  dst=$2
+  match=$3
+  #Your code here
+cat $1 | grep -v $3 > $2
+```
+```
+cat $src | grep -v $match > $dst
+```
+
+##9-Terminate the process that has the randomly assigned name specified by procname variable. procname does not contain path information.
+  
+```
+  procname=$1
+  #Your code here
+pkill $1
+```
+```
+pkill $procname
+```
+
+##10-Create a sorted full-path list of all files in the directory dirpath that were modified within the previous day. Directories should not be included in the output. Print the list to the screen, one item per line.
+NOTE: The full paths to files should be in your output. (i.e. /etc/passwd would be included)
+
+NOTE: Directory entries should not be included. (i.e. /etc would NOT be included)
+
+```
+  dirpath=$1
+  #Your code here
+find $dirpath -type f -mtime -1 | sort
+```
